@@ -3,6 +3,9 @@ export class Todo {
         this.selector = selector;
         this.columns = columns;
         this.DOM = null;
+        this.columnsDOM = [];
+        this.tasks = [];
+        this.lastUsedtaskId = 0;
 
         this.init();
     }
@@ -29,20 +32,30 @@ export class Todo {
 
         for (const column of this.columns) {
             HTML += `
-                <div>
-                    <h2>${column}</h2>
-                    <ul>
-                        <li>Task</li>
-                        <li>Task</li>
-                        <li>Task</li>
-                        <li>Task</li>
-                        <li>Task</li>
-                    </ul>
+                <div class="column">
+                    <h2 class="title">${column}</h2>
+                    <ul class="task-list"></ul>
                 </div>`;
         }
 
         this.DOM.classList.add('todo');
         this.DOM.innerHTML = HTML;
         this.DOM.style.gridTemplateColumns = `repeat(${this.columns.length}, 1fr)`;
+
+        this.columnsDOM = this.DOM.querySelectorAll('.task-list');
+    }
+
+    addTask(task) {
+        this.tasks.push(task);
+
+        const HTML = `
+            <li id="task_${++this.lastUsedtaskId}" class="task-card">
+                <div>${task.title}</div>
+                <div>${task.desc}</div>
+                <div>${task.tags}</div>
+                <div>${task.deadline}</div>
+            </li>`;
+
+        this.columnsDOM[task.columnIndex].innerHTML += HTML;
     }
 }
