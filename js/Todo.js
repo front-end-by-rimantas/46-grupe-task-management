@@ -65,6 +65,8 @@ export class Todo {
     }
 
     addTask(task) {
+        console.log(task);
+
         const taskID = ++this.lastUsedtaskId;
         this.tasks.push({
             ...task,

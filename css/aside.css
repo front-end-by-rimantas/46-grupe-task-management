@@ -41,13 +41,16 @@
     background-color: transparent;
     border: none;
     font-size: 2rem;
+    line-height: 1em;
     color: #999;
     cursor: pointer;
 }
 .aside .fa-times:hover {
     color: #333;
 }
-.aside .fa-content {
+.aside .aside-content {
+    max-height: calc(100vh - 8rem);
+    overflow: auto;
 }
 
 @media (max-width: 30rem) {
