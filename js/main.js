@@ -50,8 +50,8 @@ if (formDOM) {
                 .split(',')
                 .filter(txt => txt !== '')
                 .map(txt => ({ text: txt.trim(), color: '#333' }))
-
         });
+
         formTitleDOM.value = '';
         formDescDOM.value = '';
         formDeadlineDOM.value = '';
